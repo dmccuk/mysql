@@ -1,0 +1,76 @@
+[Create shirts DB]
+
+CREATE DATABASE shirts_db;
+
+[Create new table called shirts_db]
+
+CREATE TABLE shirts 
+  ( 
+     shirt_id INT NOT NULL AUTO_INCREMENT, 
+     article   VARCHAR(100), 
+     colour  VARCHAR(100), 
+     shirt_size CHAR,
+     last_worn  INT, 
+     PRIMARY KEY (shirt_id) 
+  ); 
+
+[Check]
+
+DESC shirts;
+  
+[Add data to database]
+  
+INSERT INTO shirts(article, colour, shirt_size, last_worn) 
+VALUES ('t-shirt', 'white', 'S', 10),
+('t-shirt', 'green', 'S', 200),
+('polo shirt', 'black', 'M', 10),
+('tank top', 'blue', 'S', 50),
+('t-shirt', 'pink', 'S', 0),
+('polo shirt', 'red', 'M', 5),
+('tank top', 'white', 'S', 200),
+('tank top', 'blue', 'M', 15);
+
+[Check]
+
+select * from shirts;
+
+[Statments to make changes below]
+
+[Single line insert with new data - use "select * from shirts" to check]
+
+INSERT INTO shirts(article, colour, shirt_size, last_worn) 
+VALUES ('polo shirt', 'purple', 'M', 50);
+
+[Print out only columns article and colour]
+select article,colour from shirts;
+
+[Print out only shirt_size of Medium and NOT the ID column]
+select article,colour,shirt_size,last_worn from shirts where shirt_size='M';
+
+[Update all polo shirts to be Large]
+UPDATE shirts SET shirt_size='L' WHERE article='polo shirt';
+
+[Update shirt last worn 15 days ago to 0]
+UPDATE shirts SET last_worn=0 WHERE last_worn=15;
+
+[change colour to 'off white' AND size to 'XS' for all white shirts]
+UPDATE shirts SET shirt_size='XS',colour='off white' where colour='white';
+
+** I got errors. I originally made my Size a CHAR instead of VARCHAR. TO change it do this:
+ALTER TABLE `shirts` MODIFY `shirt_size` VARCHAR( 30 );
+ 
+** Now i needed to run this to fix:
+UPDATE shirts SET shirt_size='XS' where colour='off white';
+
+[Delete shirts last worn over 200 days ago]
+delete from shirts where last_worn=200;
+
+[delete all tank tops]
+delete from shirts where article='tank top';
+
+[Delete all shirts]
+delete from shirts;
+
+[delete the shirts tale]
+drop table shirts;
+
