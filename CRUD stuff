@@ -1,0 +1,25 @@
+select * from cats
+
+select *  from cats where age =4;
+
+select *  from cats where name='egg';
+
+select name,age from cats where breed='tabby';
+
+select cat_id,age from cats where age=cat_id;
+
+select cat_id AS ID, name from cats;
+
+select name AS 'cat_name',breed AS 'kitty breed' from cats;
+
+UPDATE cats SET breed='Shorthair' WHERE breed='Tabby';
+
+UPDATE cats SET age=14 WHERE name='Misty';
+
+UPDATE cats SET breed='british shorthair' WHERE name='ringo';
+
+UPDATE cats SET age=12 WHERE breed='maine coon';
+ 
+delete from cats where cat_id=age;
+
+delete from cats where age=4;
